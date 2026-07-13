@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 見出し：Noto Serif JP 500 を自己ホスト。
+   Google Fonts CSS2 の text= サブセットで、サイトの見出しで使うグリフのみに
+   絞り込んだ woff2（約67KB）。next/font/google の全CJKレンジ配信＝約950KB を
+   避け、payload とリクエスト数を大幅削減している。display: swap で
+   フォールバック（明朝）→ serif に切替表示。
+
+   本文：Noto Sans JP を CJK Web フォントで配信すると、サブセット後(約170KB)でも
+   モバイル計測（1.6Mbps・TCPスロースタート）で LCP を大きく押し上げ Perf が
+   95 に届かないため、本文は和文ゴシックのシステムフォント（Hiragino / Yu Gothic 等）
+   を採用している（クライアント合意のうえの方針）。 */
+@font-face {
+  font-family: "Noto Serif JP";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/noto-serif-jp-500.woff2") format("woff2");
+}
+@layer base {
+  :root {
+    color-scheme: light;
+    /* Tailwind の font-serif / font-sans が参照するファミリ変数。
+       本文は和文ゴシックのシステムフォント（Hiragino/Yu Gothic 等）を使用。 */
+    --font-noto-serif: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+    --font-noto-sans: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base text-ink font-sans antialiased;
+    /* 本文 400（和文ゴシック・システムフォント） */
+    font-weight: 400;
+    line-height: 1.9;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif;
+    /* 見出し Noto Serif JP 500 */
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  /* キーボード操作時のフォーカスリング */
+  :focus-visible {
+    outline: 2px solid #3d4a3a;
+    outline-offset: 2px;
+  }
+
+  /* 追従CTA分の下部スペース確保（SP） */
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: 0;
+    }
+  }
+}
+
+@layer components {
+  /* IntersectionObserver フェードイン（CSS transition のみ） */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}

@@ -1,4 +1,21 @@
-import { enrollmentFee, plans, studio } from "@/lib/content";
+import { enrollmentFee, faqs, plans, studio } from "@/lib/content";
+
+// schema.org FAQPage の構造化データ（FAQリッチリザルト用）。
+// 回答はプレーンテキスト。FAQを持つトップページでのみ出力する。
+export function faqJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.a,
+      },
+    })),
+  };
+}
 
 // schema.org HealthClub の構造化データ
 export function healthClubJsonLd() {

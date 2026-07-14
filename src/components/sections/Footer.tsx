@@ -39,6 +39,11 @@ export function Footer() {
                   特定商取引法に基づく表記
                 </a>
               </li>
+              <li>
+                <a href="/case/studio-noa/" className="text-base/90 underline-offset-4 hover:underline">
+                  制作実績：このサイトのリニューアル事例
+                </a>
+              </li>
             </ul>
           </nav>
         </div>

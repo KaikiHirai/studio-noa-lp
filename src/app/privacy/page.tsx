@@ -3,10 +3,15 @@ import { LegalBlock, LegalPage } from "@/components/LegalPage";
 import { studio } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "プライバシーポリシー｜STUDIO NOA",
+  title: "プライバシーポリシー", // ルートの template により「…｜STUDIO NOA」が付与される
   description:
     "STUDIO NOA（架空クライアントを想定した制作実績）のプライバシーポリシーです。",
+  alternates: { canonical: "/privacy" },
   robots: { index: false, follow: true },
+  openGraph: {
+    title: "プライバシーポリシー｜STUDIO NOA",
+    url: "/privacy",
+  },
 };
 
 export default function PrivacyPage() {

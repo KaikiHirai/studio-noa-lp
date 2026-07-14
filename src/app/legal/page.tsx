@@ -3,10 +3,15 @@ import { LegalBlock, LegalPage } from "@/components/LegalPage";
 import { enrollmentFee, studio } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "特定商取引法に基づく表記｜STUDIO NOA",
+  title: "特定商取引法に基づく表記", // ルートの template により「…｜STUDIO NOA」が付与される
   description:
     "STUDIO NOA（架空クライアントを想定した制作実績）の特定商取引法に基づく表記です。",
+  alternates: { canonical: "/legal" },
   robots: { index: false, follow: true },
+  openGraph: {
+    title: "特定商取引法に基づく表記｜STUDIO NOA",
+    url: "/legal",
+  },
 };
 
 export default function LegalPageRoute() {

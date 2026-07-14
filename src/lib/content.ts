@@ -21,7 +21,7 @@ export const studio = {
   access: "東急東横線・大井町線 自由が丘駅 徒歩5分",
   hours: "10:00–21:00（不定休）",
   telForSchema: "+81-3-1234-5678", // JSON-LD 用（画面には表示しない）
-  url: "https://studio-noa.example.com",
+  url: "https://studio-noa-lp.vercel.app",
 };
 
 // ファーストビュー -----------------------------------------------------------

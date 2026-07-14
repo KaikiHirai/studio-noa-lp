@@ -11,7 +11,7 @@ export function healthClubJsonLd() {
     url: studio.url,
     telephone: studio.telForSchema,
     priceRange: "¥¥",
-    image: "https://studio-noa.example.com/img/hero.jpg",
+    image: `${studio.url}/img/ogp.jpg`,
     address: {
       "@type": "PostalAddress",
       streetAddress: studio.streetAddress,

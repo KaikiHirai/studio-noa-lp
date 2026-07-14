@@ -2,14 +2,18 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { healthClubJsonLd } from "@/lib/jsonld";
 
-const siteUrl = "https://studio-noa.example.com";
-const title = "STUDIO NOA｜自由が丘の女性専用パーソナルジム｜無料体験60分";
+// 本番ドメイン。metadataBase に渡すことで、以降の相対パス（canonical / og:url / og:image）が
+// このドメイン基準で絶対URL化される（未設定だと example.com 等に化ける）。
+const siteUrl = "https://studio-noa-lp.vercel.app";
 const description =
   "東京・自由が丘の女性専用パーソナルジム STUDIO NOA。完全個室・女性トレーナーのみ・食事指導つき。ジムが続かなかった方へ、無理なく続けられる場所を。無料カウンセリング＋体験トレーニング60分を受付中。";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title,
+  title: {
+    default: "STUDIO NOA｜自由が丘の女性専用パーソナルジム｜無料体験60分",
+    template: "%s｜STUDIO NOA", // 下層ページの title に自動で付与
+  },
   description,
   keywords: [
     "パーソナルジム",
@@ -23,24 +27,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ja_JP",
-    url: siteUrl,
+    url: "/",
     siteName: "STUDIO NOA",
-    title,
-    description,
     images: [
       {
-        url: "https://studio-noa.example.com/img/ogp.jpg",
+        url: "/img/ogp.jpg",
         width: 1200,
         height: 630,
         alt: "STUDIO NOA 自由が丘の女性専用パーソナルジム",
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-  },
+  twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
 };
 

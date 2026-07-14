@@ -15,14 +15,7 @@ export const metadata: Metadata = {
     template: "%s｜STUDIO NOA", // 下層ページの title に自動で付与
   },
   description,
-  keywords: [
-    "パーソナルジム",
-    "女性専用",
-    "自由が丘",
-    "完全個室",
-    "産後ダイエット",
-    "食事指導",
-  ],
+  // meta keywords は Google が2009年以降評価せず、記載は SEO 上無意味なため出力しない。
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

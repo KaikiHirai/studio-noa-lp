@@ -27,18 +27,16 @@ export function Hero() {
             </p>
           </div>
 
-          {/* 信頼数字3つ */}
+          {/* 信頼数字3つ。ラベルは <dt> のみ・数値は <dd> のみに配置し、
+              スクリーンリーダーがラベルを二重に読み上げないようにする。
+              flex-col-reverse で「数値を上・ラベルを下」に見せつつ、
+              DOM順は dt→dd を保つ（読み上げは「ラベル→数値」で1回）。 */}
           <dl className="mt-10 grid max-w-md grid-cols-3 gap-4 border-t border-line pt-8">
             {stats.map((s) => (
-              <div key={s.label} className="text-left">
-                <dt className="sr-only">{s.label}</dt>
-                <dd>
-                  <span className="block font-serif text-2xl font-medium text-olive md:text-3xl">
-                    {s.value}
-                  </span>
-                  <span className="mt-1 block text-xs text-ink/70">
-                    {s.label}
-                  </span>
+              <div key={s.label} className="flex flex-col-reverse text-left">
+                <dt className="mt-1 text-xs text-ink/70">{s.label}</dt>
+                <dd className="font-serif text-2xl font-medium text-olive md:text-3xl">
+                  {s.value}
                 </dd>
               </div>
             ))}

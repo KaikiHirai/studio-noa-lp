@@ -31,7 +31,8 @@ export const metadata: Metadata = {
     siteName: "STUDIO NOA",
     images: [
       {
-        url: "/img/ogp.jpg",
+        // output: 'export' では動的 opengraph-image が不安定なため静的PNGを用意
+        url: "/img/ogp.png",
         width: 1200,
         height: 630,
         alt: "STUDIO NOA 自由が丘の女性専用パーソナルジム",

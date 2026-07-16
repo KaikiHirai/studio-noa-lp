@@ -1,16 +1,17 @@
 // ケーススタディ /case/studio-noa のデータ。
-// 数値はすべて実測（Lighthouse 13.4.0 / Mobile / Simulated throttling, 2026-07-15計測）。
+// Before/After の数値は、2026-07-16 に各サイトを1回ずつクリーン計測した
+// その1回の測定値で統一している（Lighthouse 13.4.0 / Mobile / Simulated throttling）。
 
 export const caseMeta = {
   title: "STUDIO NOA サイトリニューアル",
   beforeUrl: "https://studio-noa-before.vercel.app",
   afterUrl: "https://studio-noa-lp.vercel.app",
   // 計測条件（発注者が自分で再計測できるよう明記する）
-  measuredOn: "2026-07-15",
+  measuredOn: "2026-07-16",
   lighthouse:
     "Lighthouse 13.4.0 / Mobile / Simulated throttling（RTT 150ms・1.6Mbps・CPU 4×＝標準モバイルプリセット）",
-  // 制作期間：実際の稼働に合わせて調整可（本プロジェクトの実働ベース）
-  duration: "実働 約3日（要件定義 → コピー → デザイン → 実装 → SEO/構造化データ → デプロイ）",
+  // 制作期間：未確定。実際の実働日数が確定してから記入する。
+  duration: "【要確認】実働日数を確定のうえ記入",
   scope:
     "要件定義 / コピーライティング / デザイン / 実装 / SEO / 構造化データ",
   stack: "Next.js 15（App Router） / TypeScript / Tailwind CSS",
@@ -23,10 +24,10 @@ export type Category = {
   after: number;
 };
 
-// 4カテゴリ（すべて実測値）
+// 4カテゴリ（2026-07-16 の1回計測で統一）
 export const categories: Category[] = [
   { label: "Performance", sub: "表示の速さ", before: 55, after: 96 },
-  { label: "Accessibility", sub: "誰にとっても使えるか", before: 71, after: 100 },
+  { label: "Accessibility", sub: "誰にとっても使えるか", before: 67, after: 100 },
   { label: "Best Practices", sub: "作りの健全さ", before: 92, after: 100 },
   { label: "SEO", sub: "検索・モバイル対応の基礎", before: 45, after: 100 },
 ];
@@ -40,28 +41,29 @@ export const perfWeights = [
   { label: "CLS", desc: "表示中にガタッとズレないか", weight: 25, propped: true },
 ];
 
-// Before の主要メトリクス（Perf/FCP/LCP/転送量は指定値、それ以外は再計測で裏づけ）
+// Before の主要メトリクス（2026-07-16 の1回計測で統一）
 export const beforeMetrics = {
   perf: 55,
-  fcp: "11.5秒",
-  lcp: "17.9秒",
+  fcp: "11.9秒",
+  lcp: "16.8秒",
   speedIndex: "11.9秒",
   tbt: "0ms",
   cls: "0",
-  transfer: "2,644 KiB",
+  transfer: "2,611 KiB",
 };
 
+// After の主要メトリクス（2026-07-16 の1回計測で統一）
 export const afterMetrics = {
   perf: 96,
-  fcp: "1.7秒",
-  lcp: "2.6秒",
-  speedIndex: "2.6秒",
-  tbt: "40ms",
+  fcp: "1.5秒",
+  lcp: "2.3秒",
+  speedIndex: "3.9秒",
+  tbt: "30ms",
   cls: "0",
   transfer: "528 KiB",
 };
 
-// 18秒の原因3つ
+// 十数秒（LCP 16.8秒）の原因3つ
 export const causes = [
   {
     head: "フォント全ウェイト＋CDNのCSSがレンダーブロッキング",
@@ -72,7 +74,7 @@ export const causes = [
     body: "実際の表示サイズの4倍以上の画像をダウンロードさせていた。見た目は同じでも通信量は数倍。",
   },
   {
-    head: "総転送量 2,644 KiB",
+    head: "総転送量 2,611 KiB",
     body: "スマホ回線・広告直後の1アクセスで捌くには重すぎる量。",
   },
 ];

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     absolute: "STUDIO NOA サイトリニューアル｜制作実績（ケーススタディ）",
   },
   description:
-    "女性専用パーソナルジムのサイトリニューアル事例。Lighthouse Performance 55→96・SEO 45→100、LCP 17.9秒→2.6秒。スコアの内訳の読み方から、料金・法務・SEOの意思決定まで。",
+    "女性専用パーソナルジムのサイトリニューアル事例。Lighthouse Performance 55→96・SEO 45→100、LCP 16.8秒→2.3秒。スコアの内訳の読み方から、料金・法務・SEOの意思決定まで。",
   alternates: { canonical: "/case/studio-noa" },
   robots: { index: true, follow: true },
   openGraph: {
@@ -28,13 +28,13 @@ export const metadata: Metadata = {
     url: "/case/studio-noa",
     title: "STUDIO NOA サイトリニューアル｜制作実績",
     description:
-      "Performance 55→96・SEO 45→100、LCP 17.9秒→2.6秒。スコアの内訳を読み、料金・法務・SEOまで診断したリニューアル事例。",
+      "Performance 55→96・SEO 45→100、LCP 16.8秒→2.3秒。スコアの内訳を読み、料金・法務・SEOまで診断したリニューアル事例。",
     images: [
       {
         url: "/img/case/ogp.png",
         width: 1200,
         height: 630,
-        alt: "STUDIO NOA サイトリニューアル Performance 55→96 / LCP 17.9秒→2.6秒",
+        alt: "STUDIO NOA サイトリニューアル Performance 55→96 / LCP 16.8秒→2.3秒",
       },
     ],
   },
@@ -77,8 +77,8 @@ export default function CaseStudyPage() {
                 b: "PC向けの固定幅のまま。スマホで開くと文字が極端に小さく、拡大しないと読めません。STUDIO NOA の集客は Instagram 広告が中心で、流入の約9割がスマートフォン。つまり「一番多く来る人にとって一番読みにくい」状態でした。",
               },
               {
-                h: "表示に17.9秒かかる（LCP 17.9秒）",
-                b: "広告は1クリックごとにお金がかかります。その費用を払って連れてきた見込み客が、メイン画像が出るまで約18秒待たされる。多くの人はその前に戻るボタンを押します。払った広告費が、表示される前に消えていました。",
+                h: "表示に16.8秒かかる（LCP 16.8秒）",
+                b: "広告は1クリックごとにお金がかかります。その費用を払って連れてきた見込み客が、メイン画像が出るまで16.8秒待たされる。多くの人はその前に戻るボタンを押します。払った広告費が、表示される前に消えていました。",
               },
               {
                 h: "申し込む手段が電話しかない",
@@ -106,10 +106,10 @@ export default function CaseStudyPage() {
             なぜ Lighthouse スコアだけでは判断できないか
           </h2>
 
-          {/* 冒頭：巨大な17.9秒 */}
+          {/* 冒頭：巨大な16.8秒 */}
           <div className="mt-10">
             <BigStat
-              value="17.9"
+              value="16.8"
               unit="秒"
               tone="ink"
               caption="旧サイトが「メイン画像を表示」するまでにかかっていた時間（LCP）。"
@@ -188,7 +188,7 @@ export default function CaseStudyPage() {
             TBT と CLS は、JSをほとんど使わない古い静的サイトなら
             <strong className="font-bold">構造的に満点になりやすい</strong>指標です。
             旧サイトは（皮肉にも）作りが古く軽量だったおかげで、体感は最悪でも点数だけは
-            中くらいに見えていた。では、なぜ18秒もかかっていたのか——原因は3つでした。
+            中くらいに見えていた。では、なぜ十数秒もかかっていたのか——原因は3つでした。
           </p>
 
           <ol className="mt-6 flex flex-col gap-4">
@@ -205,22 +205,22 @@ export default function CaseStudyPage() {
 
           <div className="mt-10 flex flex-wrap items-end gap-x-10 gap-y-6 border-t border-line pt-8">
             <BigStat
-              value="2.6"
+              value="2.3"
               unit="秒"
               tone="olive"
-              caption="After の LCP（17.9秒 → 2.6秒）"
+              caption="After の LCP（16.8秒 → 2.3秒）"
             />
             <BigStat
               value="528"
               unit="KiB"
               tone="olive"
-              caption="After の総転送量（2,644 → 528。旧サイトの約1/5）"
+              caption="After の総転送量（2,611 → 528。旧サイトの約1/5）"
             />
           </div>
           <p className="mt-6 text-[0.95rem] font-bold leading-loose text-ink">
             「スコアを上げること」と「速くすること」は、別の仕事です。
             <span className="font-normal text-ink/80">
-              私がまず行ったのは点数狙いではなく、LCP 17.9秒を2.6秒にする＝実際に速くすること。点数は結果として後から付いてきます。
+              私がまず行ったのは点数狙いではなく、LCP 16.8秒を2.3秒にする＝実際に速くすること。点数は結果として後から付いてきます。
             </span>
           </p>
         </Prose>
@@ -249,7 +249,7 @@ export default function CaseStudyPage() {
               しています。つまり<strong className="font-bold">広告を止めた瞬間、自然検索からの流入がほぼ期待できない</strong>状態でした。
             </p>
             <p className="text-[0.95rem] leading-loose text-ink/85">
-              <strong className="font-bold">Accessibility 71点</strong>も見過ごせません。alt欠落・画像だけのナビ・コントラスト不足が原因で、読み上げソフトを使う方に情報が届かないだけでなく、alt欠落は検索エンジンの画像理解も妨げます。
+              <strong className="font-bold">Accessibility 67点</strong>も見過ごせません。alt欠落・画像だけのナビ・コントラスト不足が原因で、読み上げソフトを使う方に情報が届かないだけでなく、alt欠落は検索エンジンの画像理解も妨げます。
             </p>
 
             {/* Best Practices 92 の説明（都合の悪い数字を隠さない） */}

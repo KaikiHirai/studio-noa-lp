@@ -10,8 +10,8 @@ export const caseMeta = {
   measuredOn: "2026-07-16",
   lighthouse:
     "Lighthouse 13.4.0 / Mobile / Simulated throttling（RTT 150ms・1.6Mbps・CPU 4×＝標準モバイルプリセット）",
-  // 制作期間：未確定。実際の実働日数が確定してから記入する。
-  duration: "【要確認】実働日数を確定のうえ記入",
+  // 制作期間：実働日数（確定）
+  duration: "実働 約7日",
   scope:
     "要件定義 / コピーライティング / デザイン / 実装 / SEO / 構造化データ",
   stack: "Next.js 15（App Router） / TypeScript / Tailwind CSS",

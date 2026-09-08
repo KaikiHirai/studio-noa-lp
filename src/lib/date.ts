@@ -1,5 +1,7 @@
-// 現在月を「7月」形式で返す。オファーの「◯月の無料体験枠」に使用。
-// ビルド時（SSG）に評価されるため、静的書き出しでも生成時点の月が入る。
-export function currentMonthLabel(now: Date = new Date()): string {
-  return `${now.getMonth() + 1}月`;
+// 体験オファーの対象月。静的出力とブラウザで同じ表示になるよう明示する。
+// キャンペーン更新時はこの値を変更する（最終CTA・追従CTAで共用）。
+const offerMonth = 9;
+
+export function currentMonthLabel(): string {
+  return `${offerMonth}月`;
 }

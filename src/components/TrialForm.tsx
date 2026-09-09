@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { currentMonthLabel } from "@/lib/date";
 
 type Fields = {
   name: string;
@@ -77,6 +78,7 @@ function validate(f: Fields): Errors {
 
 export function TrialForm() {
   const uid = useId();
+  const month = currentMonthLabel();
   const [values, setValues] = useState<Fields>(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
   const [submitted, setSubmitted] = useState(false);
@@ -197,7 +199,7 @@ export function TrialForm() {
             aria-invalid={!!errors.pref1}
             aria-describedby={errors.pref1 ? `${uid}-pref1-err` : undefined}
             className={inputCls}
-            placeholder="例：7/20（土）14時ごろ"
+            placeholder={`例：${month}20日 14時ごろ`}
           />
         </Field>
         <Field id={`${uid}-pref2`} label="ご希望日時（第2希望）">
@@ -207,7 +209,7 @@ export function TrialForm() {
             value={values.pref2}
             onChange={(e) => update("pref2", e.target.value)}
             className={inputCls}
-            placeholder="例：7/22（月）午前中"
+            placeholder={`例：${month}22日 午前中`}
           />
         </Field>
       </div>

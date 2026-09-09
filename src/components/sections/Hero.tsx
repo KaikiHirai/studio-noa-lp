@@ -11,8 +11,13 @@ export function Hero() {
           <p className="mb-6 text-sm font-bold tracking-widest text-olive">
             {studio.concept}｜{studio.addressLocality} 自由が丘
           </p>
-          <h1 className="whitespace-pre-line text-3xl leading-[1.45] md:text-[2.75rem] md:leading-[1.4]">
-            {hero.copyMain}
+          {/* 2列表示の狭い幅でも語尾だけが折り返されないよう、列幅に合わせて文字を調整。 */}
+          <h1 className="text-[clamp(1.375rem,6.8vw,2rem)] leading-[1.45] md:text-[clamp(1.5rem,3.2vw,2.375rem)] md:leading-[1.4]">
+            {hero.copyMain.split("\n").map((line) => (
+              <span key={line} className="block text-balance">
+                {line}
+              </span>
+            ))}
           </h1>
           <p className="mt-6 max-w-xl text-[0.95rem] leading-loose text-ink/90">
             {hero.copySub}
